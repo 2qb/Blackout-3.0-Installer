@@ -35,6 +35,6 @@ Download from [here](https://github.com/2qb/Blackout-3.0-Installer/releases/) or
 
 2. Build as release in visual studio
 
-## Acknowledgements
+## Credits
 
 * [chell](https://github.com/chell-dev/Blackout-3.0)
