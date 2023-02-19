@@ -30,7 +30,7 @@ Download from [here](https://github.com/2qb/Blackout-3.0-Installer/releases/) or
 1. Clone the repo
 
 ```sh
-    git clone https://github.com/2qb/Blackout-3.0-Installer/
+  git clone https://github.com/2qb/Blackout-3.0-Installer/
 ```
 
 2. Build as release in visual studio
