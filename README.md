@@ -37,5 +37,5 @@ Download from [here](https://github.com/2qb/Blackout-3.0-Installer/releases/) or
 
 ## Credits
 
-* [chell](https://github.com/chell-dev/Blackout-3.0)
-* [fabric](https://fabricmc.net/)
+* [chell](https://github.com/chell-dev/Blackout-3.0) for Blackout 3.0
+* [fabric](https://fabricmc.net/) 
