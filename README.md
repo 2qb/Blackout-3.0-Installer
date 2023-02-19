@@ -11,7 +11,7 @@
 
 ![Downloads](https://img.shields.io/github/downloads/2qb/Blackout-3.0-Installer/total) ![Issues](https://img.shields.io/github/issues/2qb/Blackout-3.0-Installer) 
 
-## About The Project
+## Screenshot
 
 ![screenshot](https://user-images.githubusercontent.com/68710010/219970603-7f0f3c95-4839-495a-8307-155a412ace29.png)
 
