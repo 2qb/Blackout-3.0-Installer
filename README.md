@@ -5,6 +5,7 @@
   <p align="center">
     A Simple C# installer that makes it easier to install the newest Blackout 3.0 client and fabric for 1.19.3
     <br/>
+	NOTE: Blackout is still in very early development and might not function as intended yet.
     <br/>
   </p>
 </p>
