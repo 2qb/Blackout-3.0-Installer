@@ -102,17 +102,27 @@ namespace BlackoutInstaller
         }
 
         private void InstallButton_MouseClick(object sender, MouseEventArgs e) {
-            string apiUrl = $"https://api.github.com/repos/chell-dev/Blackout-3.0/releases/latest";
+            string blackoutUrl = $"https://api.github.com/repos/chell-dev/Blackout-3.0/releases/latest";
             string fabricInstallerUrl = "https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.11.1/fabric-installer-0.11.1.jar";
             string fabricInstallTo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Downloads";
 
             using (WebClient client = new WebClient()) 
             {
                 client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
-                string releaseJson = client.DownloadString(apiUrl);
+                string downloadUrl = "";
+                try
+                {
+                    string releaseJson = client.DownloadString(blackoutUrl);
 
-                dynamic release = JsonConvert.DeserializeObject(releaseJson);
-                string downloadUrl = release.assets[0].browser_download_url;
+                    dynamic release = JsonConvert.DeserializeObject(releaseJson);
+                    downloadUrl = release.assets[0].browser_download_url;
+                }
+                catch (Exception jsonEx)
+                {
+                    install_label.Text = "Installation failed!";
+                    fail_label.Text = "No release found";
+                    return;
+                }
 
                 using (WebClient downloadClient = new WebClient()) 
                 {
@@ -123,13 +133,22 @@ namespace BlackoutInstaller
                     DialogResult fabricresult = MessageBox.Show("Do you have fabric 1.19.3 installed?", "Blackout 3.0", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (fabricresult == DialogResult.No)
                     {
-                        downloadClient.DownloadFile(fabricInstallerUrl, fabricInstallTo);
+                        try
+                        {
+                            downloadClient.DownloadFile(fabricInstallerUrl, fabricInstallTo);
 
-                        ProcessStartInfo fabricJar = new ProcessStartInfo();
-                        fabricJar.FileName = "java";
-                        fabricJar.Arguments = "-jar \"" + fabricInstallTo + "\"";
-                        Process fabricProcess = Process.Start(fabricJar);
-                        fabricProcess.WaitForExit();
+                            ProcessStartInfo fabricJar = new ProcessStartInfo();
+                            fabricJar.FileName = "java";
+                            fabricJar.Arguments = "-jar \"" + fabricInstallTo + "\"";
+                            Process fabricProcess = Process.Start(fabricJar);
+                            fabricProcess.WaitForExit();
+                        }
+                        catch (Exception fabricEx)
+                        {
+                            install_label.Text = "Installation failed!";
+                            fail_label.Text = "Issue with fabric";
+                            return;
+                        }
 
                     }
 
@@ -144,7 +163,9 @@ namespace BlackoutInstaller
                             File.Delete(Path.Combine(installto, "mods", filename)); 
                         }
                     }
-                    downloadClient.DownloadFile(downloadUrl, downloadPath);
+                    try
+                    {
+                        downloadClient.DownloadFile(downloadUrl, downloadPath);
 
                         string modsPath = Path.Combine(installto, "mods");
                         Directory.CreateDirectory(modsPath);
@@ -152,7 +173,14 @@ namespace BlackoutInstaller
                         string destinationPath = Path.Combine(modsPath, filename);
                         File.Move(downloadPath, destinationPath);
 
-                    install_label.Text = "Installation successfull!";
+                        install_label.Text = "Installation successfull!";
+                    }
+                    catch (Exception blackoutEx)
+                    {
+                        install_label.Text = "Installation failed!";
+                        fail_label.Text = "Issue with download";
+                        return;
+                    }
                 }
             }
         }

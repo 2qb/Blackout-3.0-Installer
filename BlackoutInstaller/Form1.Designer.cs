@@ -36,6 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.install_label = new System.Windows.Forms.Label();
+            this.fail_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -99,11 +100,18 @@
             this.install_label.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.install_label.Name = "install_label";
             // 
+            // fail_label
+            // 
+            resources.ApplyResources(this.fail_label, "fail_label");
+            this.fail_label.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.fail_label.Name = "fail_label";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.Controls.Add(this.fail_label);
             this.Controls.Add(this.install_label);
             this.Controls.Add(this.DirectoryText);
             this.Controls.Add(this.panel1);
@@ -133,6 +141,7 @@
         private System.Windows.Forms.Button DirButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label install_label;
+        private System.Windows.Forms.Label fail_label;
     }
 }
 
