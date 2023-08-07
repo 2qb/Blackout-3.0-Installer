@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-  <h1 align="center">Blackout-3.0 Installer</h3>
+  <h1 align="center">Blackout-3.0 Installer [OUTDATED]</h3>
 
   <p align="center">
     A Simple C# installer that makes it easier to install the newest Blackout 3.0 client and fabric for 1.19.3
