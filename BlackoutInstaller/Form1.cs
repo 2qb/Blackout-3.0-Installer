@@ -120,7 +120,7 @@ namespace BlackoutInstaller
                 catch (Exception jsonEx)
                 {
                     install_label.Text = "Installation failed!";
-                    fail_label.Text = "No release found";
+                    fail_label.Text = "No github release found";
                     return;
                 }
 
