@@ -130,7 +130,7 @@ namespace BlackoutInstaller
                     string installto = DirectoryText.Text;
                     string downloadPath = Path.Combine(installto, filename);
 
-                    DialogResult fabricresult = MessageBox.Show("Do you have fabric 1.19.4 installed?", "Blackout 3.0", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult fabricresult = MessageBox.Show("Do you have fabric 1.20.2 installed?", "Blackout 3.0", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (fabricresult == DialogResult.No)
                     {
                         try
